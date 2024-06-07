@@ -3,6 +3,7 @@
 2. [Colecciones Inmutables](#schema2)
 3. [Colecciones Mutables](#schema3)
 4. [Operaciones Comunes en Colecciones](#schema4)
+5. [Array](#schema5)
 
 <hr>
 
@@ -46,6 +47,15 @@ val isEmpty = fruits.isEmpty    // false
 val size = fruits.size          // 3
 val newList = fruits :+ "date"  // List("apple", "banana", "cherry", "date")
 ```
+- ** Añadir elementos**
+```scala
+var lista1=List(2,3)
+lista1=lista1:+45
+```
+El código funciona porque estás creando una nueva lista al agregar el elemento 45 a la lista `lista1`. Aunque las listas en Scala son inmutables, esto no significa que no puedas crear nuevas listas con elementos adicionales o eliminados.
+
+Cuando haces `lista1 = lista1 :+ 45`, estás creando una nueva lista que contiene todos los elementos de `lista1` más el elemento 45. La lista original `lista1` sigue siendo inmutable; simplemente estás asignando una nueva lista a la variable `lista1`. Este es un enfoque común en Scala y en otros lenguajes funcionales para trabajar con estructuras de datos inmutables.
+
 ### **Set (Conjunto)**
 Los conjuntos son colecciones sin duplicados.
 
@@ -167,3 +177,47 @@ Puedes agrupar elementos según una clave:
 ```scala
 val groupedByParity = numbers.groupBy(_ % 2)  // Map(1 -> List(1, 3, 5), 0 -> List(2,
 ```
+<hr>
+
+<a name="schema5"></a>
+
+## 5. Array
+
+Un array es una colección mutable que contiene un número fijo de elementos del mismo tipo. A diferencia de las listas, que son inmutables por defecto, los arrays en Scala son mutables, lo que significa que puedes modificar los elementos que contiene después de que se ha creado el array.
+
+### **Creación de Arrays**
+Puedes crear un array en Scala especificando el tipo de elementos que contendrá y proporcionando los valores iniciales:
+
+```scala
+val array1 = Array(1, 2, 3, 4, 5) // Crear un array de enteros
+val array2 = Array("Hola", "Mundo") // Crear un array de cadenas
+val array3 = Array.fill(5)(0) // Crear un array de tamaño 5 con todos los elementos inicializados a 0
+```
+También puedes especificar el tipo de elementos explícitamente:
+
+```scala
+val array: Array[Int] = Array(1, 2, 3)
+```
+### **Acceso a Elementos**
+Puedes acceder a los elementos de un array utilizando su índice, que comienza en 0:
+
+```scala
+val primerElemento = array(0) // Acceder al primer elemento
+val segundoElemento = array(1) // Acceder al segundo elemento
+```
+### **Modificación de Elementos**
+Dado que los arrays son mutables, puedes modificar los elementos que contienen después de que se ha creado el array:
+
+```scala
+array(0) = 10 // Modificar el primer elemento a 10
+array(1) = 20 // Modificar el segundo elemento a 20
+```
+### **Métodos Útiles**
+Los arrays en Scala proporcionan una variedad de métodos útiles para trabajar con ellos, incluyendo:
+
+- length: Devuelve el número de elementos en el array.
+- foreach: Itera sobre todos los elementos del array y aplica una función a cada elemento.
+- map, filter, reduce, etc.: Métodos de alto orden para transformar y manipular los elementos del array.
+- toArray: Convierte una colección en un array.
+### **Limitaciones**
+Es importante tener en cuenta que los arrays en Scala tienen un tamaño fijo y que no pueden cambiar de tamaño dinámicamente. Si necesitas una colección mutable que pueda cambiar de tamaño, puedes usar `ArrayBuffer` del paquete `scala.collection.mutable`.
